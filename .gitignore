@@ -6,8 +6,8 @@ node_modules/
 /dist
 /build
 /output
-/*.js    # Ignore all compiled JS files in the root (adjust as needed based on your tsconfig.json "outDir")
-/*.js.map
+*.js    # Ignore all compiled JS files in the root (adjust as needed based on your tsconfig.json "outDir")
+*.js.map
 
 # node-gyp rebuilds
 .node-gyp

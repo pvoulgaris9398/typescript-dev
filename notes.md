@@ -6,3 +6,4 @@
   - Adds `typescript` to node_modules and `package.json`
 - `npm tsc --init`
   - Adds `tsconfig.json`
+- Install `tsx` and run `npx tsx src/index.ts`
