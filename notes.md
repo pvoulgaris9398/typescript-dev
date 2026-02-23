@@ -1,7 +1,6 @@
 # Notes
 
-
-
-* `npm init -y`
-* `npm install typescript --save-dev`
-* `npm tsc --init`
+-`npm init -y`
+  - Adds `package.json`
+- `npm install typescript --save-dev`
+- `npm tsc --init`

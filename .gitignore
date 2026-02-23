@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+/typings
+
+# Compiled output
+/dist
+/build
+/output
+/*.js    # Ignore all compiled JS files in the root (adjust as needed based on your tsconfig.json "outDir")
+/*.js.map
+
+# node-gyp rebuilds
+.node-gyp
+
+# Optional: if you commit built artifacts to a separate dir, exclude source maps
+# /build/**/*.js.map
+
+# Temporary files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.eslintcache
+.stylelintcache
+
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE and OS files
+.vscode/        # Optional: depends on project setup and team preference
+.idea/          # Optional
+.DS_Store       # macOS
+Thumbs.db       # Windows
+
+# Test coverage
+/coverage
