@@ -1,12 +1,27 @@
 {
     "window.zoomLevel": 2,
+    "editor.minimap.enabled": false,
+    "editor.stickyScroll.enabled": false,
+    "editor.formatOnSave": true,
+    "typescript.tsdk": "./node_modules/typescript/lib",
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features",
+        "editor.quickSuggestions": {
+            "strings": true
+        },
+        "editor.suggest.insertMode": "replace"
+    },
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,
         "**/.hg": true,
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
-        "**/*.js": { "when": "$(basename).ts"},
+        "**/*.js": {
+            "when": "$(basename).ts"
+        },
     },
-    "typescript.tsdk": "./node_modules/typescript/lib"
 }
