@@ -1,5 +1,19 @@
 {
     "window.zoomLevel": 2,
+    "editor.minimap.enabled": false,
+    "editor.stickyScroll.enabled": false,
+    "editor.formatOnSave": true,
+    "js/ts.tsdk.path": "./node_modules/typescript/lib",
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features",
+        "editor.quickSuggestions": {
+            "strings": true
+        },
+        "editor.suggest.insertMode": "replace"
+    },
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,
@@ -10,7 +24,4 @@
             "when": "$(basename).ts"
         },
     },
-    "editor.formatOnSave": true,
-    "terminal.integrated.defaultProfile.windows": "Git Bash",
-    "js/ts.tsdk.path": "./node_modules/typescript/lib"
 }
