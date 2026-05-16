@@ -6,7 +6,11 @@
         "**/.hg": true,
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
-        "**/*.js": { "when": "$(basename).ts"},
+        "**/*.js": {
+            "when": "$(basename).ts"
+        },
     },
-    "typescript.tsdk": "./node_modules/typescript/lib"
+    "editor.formatOnSave": true,
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "js/ts.tsdk.path": "./node_modules/typescript/lib"
 }
