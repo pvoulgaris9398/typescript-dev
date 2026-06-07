@@ -5,16 +5,17 @@ import { createStream } from 'pino-seq';
 
 const app = express();
 const PORT = 3000;
+const SEQ_URL = process.env.SEQ_HOST ? `http://${process.env.SEQ_HOST}:5341` : 'http://localhost:5341';
 
 // Are we running locally?
 const isProduction = process.env.NODE_ENV === 'production';
 
 const seqStream = createStream({
-    serverUrl: process.env.SEQ_URL || 'http://localhost:5341',
+    serverUrl: SEQ_URL,
     //apiKey: process.env.SEQ_API_KEY || 'your-api-key-here',
-    maxBatchingTime: 1000, // Send logs every second
+    maxBatchingTime: 1000,
     onError: (err) => {
-        console.error('Error sending logs to Seq:', err);
+        console.error('Error sending logs to Seq: ${SEQ_URL}:', err);
     },
 });
 
