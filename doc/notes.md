@@ -28,4 +28,8 @@
 
 - Created `artemis\webapi` project
 - Installed dependencies
-- Install `express`
+- Install `express`:
+  - `npm install express`
+- Install dev dependencies:
+  - `npm install --save-dev typescript @types/node @types/express ts-node nodemon`
+-
