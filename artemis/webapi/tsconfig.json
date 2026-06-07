@@ -7,6 +7,7 @@
     "outDir": "./dist",
     "composite": true,
     "isolatedDeclarations": true,
+    "allowSyntheticDefaultImports": true,
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
