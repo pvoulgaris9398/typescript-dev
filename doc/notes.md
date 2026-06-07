@@ -4,7 +4,7 @@
   - Adds `package.json`
 - `npm install typescript --save-dev`
   - Adds `typescript` to node_modules and `package.json`
-- `npm tsc --init`
+- `npx tsc --init`
   - Adds `tsconfig.json`
 - Install `tsx` and run `npx tsx src/index.ts`
 - See [tsx](https://tsx.is/getting-started)
@@ -23,3 +23,9 @@
 
 - Implement structured logging with [Pino](https://getpino.io/#/)
 - Similar to `Serilog` in the dotnet space
+
+## Create initial express-based Hello World API
+
+- Created `artemis\webapi` project
+- Installed dependencies
+- Install `express`
