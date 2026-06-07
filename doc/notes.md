@@ -24,7 +24,12 @@
 - Implement structured logging with [Pino](https://getpino.io/#/)
 - Similar to `Serilog` in the dotnet space
 
-## Create initial express-based Hello World API
+```bash
+npm install pino pino-http
+npm install --save-dev pino-pretty
+```
+
+### Create initial express-based Hello World API
 
 - Created `artemis\webapi` project
 - Installed dependencies
