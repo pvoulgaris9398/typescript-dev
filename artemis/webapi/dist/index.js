@@ -1,3 +1,4 @@
+// Explicitly import Request as a type
 import express from 'express';
 const app = express();
 const PORT = 3000;

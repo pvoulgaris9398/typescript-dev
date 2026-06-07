@@ -1,5 +1,8 @@
 import { getRandomValues } from 'crypto';
-import express, { Request, Response } from 'express';
+// Explicitly import Request as a type
+import express from 'express';
+import type { Request, Response } from 'express';
+
 
 const app = express();
 const PORT = 3000;
@@ -18,6 +21,6 @@ app.get('/ticker', (req: Request, res: Response<StockPriceListResponse>) => {
 });
 
 app.listen(PORT, () => {
-    console.log('Server is listening at http://localhost:${PORT}');
+    console.log(`Server is listening at http://localhost:${PORT}`);
 });
 
