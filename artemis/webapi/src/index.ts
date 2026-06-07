@@ -1,8 +1,4 @@
-import { getRandomValues } from 'crypto';
-// Explicitly import Request as a type
-import express from 'express';
-import type { Request, Response } from 'express';
-
+import express, { type Request, type Response } from 'express';
 
 const app = express();
 const PORT = 3000;

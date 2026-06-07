@@ -32,4 +32,10 @@
   - `npm install express`
 - Install dev dependencies:
   - `npm install --save-dev typescript @types/node @types/express ts-node nodemon`
--
+- Encountered this error:
+
+![](2026-06-07-03.jpg)
+
+- And this fixed it:
+
+![](2026-06-07-04.jpg)
