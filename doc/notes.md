@@ -19,6 +19,13 @@
 
 ## `Sunday, 6/7/26`
 
+### Send logs/output to `Seq`
+
+- See [here](https://datalust.co/)
+- `npm install pino-seq`
+- Run `docker-compose up` in project directory
+- Note `compose.yaml` is configured to run `seq` locally
+
 ### Implement Structured Logging
 
 - Implement structured logging with [Pino](https://getpino.io/#/)

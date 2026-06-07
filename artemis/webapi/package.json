@@ -23,6 +23,7 @@
   "dependencies": {
     "express": "^5.2.1",
     "pino": "^10.3.1",
-    "pino-http": "^11.0.0"
+    "pino-http": "^11.0.0",
+    "pino-seq": "^4.0.0"
   }
 }
