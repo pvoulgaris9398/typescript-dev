@@ -24,5 +24,7 @@
         "**/*.js": {
             "when": "$(basename).ts"
         },
+        "**/node_modules": true,
+        "**/*.tsbuildinfo": true,
     },
 }
