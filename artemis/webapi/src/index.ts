@@ -32,7 +32,7 @@ app.use(pinoHttp.default({
     transport: !isProduction
         ? { target: 'pino-pretty', options: { colorize: true } }
         : undefined,
-
+    genReqId: (req) => req.headers['x-correlation-id'] || crypto.randomUUID(),
     level: isProduction ? 'info' : 'debug',
 
 
@@ -48,7 +48,11 @@ app.get('/ticker', (req: Request, res: Response<StockPriceListResponse>) => {
 
     const ticker = tickers[Math.floor(Math.random() * tickers.length)];
 
-    req.log.info({ currentTicker: ticker }, "Handling '/ticker' request");
+    const correlationId = req.headers['x-correlation-id'];
+
+    logger.info({ correlationId }, "Received '/ticker' request with correlation ID");
+
+    // req.log.info({ currentTicker: ticker }, "Handling '/ticker' request");
     logger.info({ currentTicker: ticker }, "Logging '/ticker' request with pino");
 
     res.status(202).json({ ticker: ticker })
