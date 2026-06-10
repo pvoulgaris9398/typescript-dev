@@ -19,6 +19,16 @@
 
 ## `Sunday, 6/7/26`
 
+### Add `correlation` or `request` ID to log entries
+
+- Added logic, but it looks like it's still not fully-functional
+- Good enough for now.
+
+### Configure everything to run locally in docker container
+
+- Using `docker-compose up --build`
+- It works!
+
 ### Send logs/output to `Seq`
 
 - See [here](https://datalust.co/)
