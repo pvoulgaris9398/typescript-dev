@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+  postgres:
+    container_name: artemis-db-dev01
+    image: postgres:16-alpine
+    volumes:
+      - ./init-scripts:/docker-entrypoint-initdb.d

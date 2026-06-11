@@ -17,6 +17,10 @@
 
 # Working Log
 
+## `Wednesday, 6/10/26`
+
+### Add SQL Create statements to postgresql deployment
+
 ## `Sunday, 6/7/26`
 
 ### Add `correlation` or `request` ID to log entries

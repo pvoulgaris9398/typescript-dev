@@ -1,26 +1,87 @@
 services:
- api:
-    build:
-      context: ./webapi
-      dockerfile: Dockerfile
-    container_name: artemis-api
-    ports:
-      - "3000:3000"
+  db:
+    extends:
+      file: ./postgres/postgres-template.yaml
+      service: postgres
+    restart: always
     environment:
-      - PORT=3000
-      - SEQ_HOST=seq
+
+      PGUSER: postgres             
+      PGPASSWORD: super_admin_password
+      POSTGRES_USER: postgres             
+      POSTGRES_PASSWORD: super_admin_password
+      POSTGRES_DB: postgres
+
+      APP_DB_NAME: artemis_analytics
+      APP_DB_USER: artemis_worker
+      APP_DB_PASS: super_secret_app_pass
+      APP_SCHEMA_NAME: pricing
+    ports:
+      - "5432:5432"
+    volumes:
+      # Mount local data folder to persist data across container restarts
+      - postgres_data:/var/lib/postgresql/data
+      # CRITICAL: Mounts your local script folder to the auto-execute entrypoint folder
+      - ./db/scripts:/docker-entrypoint-initdb.d/
+    networks:
+      - app-network
+
+  pgadmin:
+    extends:  
+      file: ./pgadmin/pgadmin-template.yaml
+      service: pgadmin
+    restart: always
+    environment:
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+      PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: "False"
+      
+      PGADMIN_EMAIL: tdevuser@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: super-dee-duper-duper!
+    networks:
+      - app-network
     depends_on:
-      - seq
- seq:
-    image: datalust/seq:latest
-    container_name: seq
-    environment:
-      - ACCEPT_EULA=Y
-      - SEQ_FIRSTRUN_NOAUTHENTICATION=true
-    ports:
-      - 5341:5341
-      - 8081:80
+      - db
+
+volumes:
+  postgres_data:
+  pgadmin:
 
 networks:
   app-network:
     driver: bridge
+
+# api:
+#     build:
+#       context: ./webapi
+#       dockerfile: Dockerfile
+#     container_name: artemis-api
+#     ports:
+#       - "3000:3000"
+#     environment:
+#       - PORT=3000
+#       - SEQ_HOST=seq
+#     depends_on:
+#       - seq
+ 
+# seq:
+#     image: datalust/seq:latest
+#     container_name: seq
+#     environment:
+#       - ACCEPT_EULA=Y
+#       - SEQ_FIRSTRUN_NOAUTHENTICATION=true
+#     ports:
+#       - 5341:5341
+#       - 8081:80
+
+# rabbitmq:
+#     image: rabbitmq:3-management-alpine
+#     container_name: financial_rabbitmq
+#     restart: always
+#     ports:
+#       - "5672:5672"   # RabbitMQ default AMQP communication port
+#       - "15672:15672" # RabbitMQ Management Dashboard web UI port
+#     environment:
+#       RABBITMQ_DEFAULT_USER: guest
+#       RABBITMQ_DEFAULT_PASS: guest
+#     networks:
+#       - app-network

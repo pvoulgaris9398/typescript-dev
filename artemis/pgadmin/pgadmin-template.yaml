@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+  pgadmin:
+    container_name: artemis-pgadmin-dev01
+    image: dpage/pgadmin4:latest
+    environment:
+      PGADMIN_DEFAULT_EMAIL: tdevuser@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: super-dee-duper-duper!
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+      - ./pgadmin.json:/pgadmin4/servers.json
+    ports:
+      - "5050:80"
+    entrypoint:
+      - "/bin/sh"
+      - "-c"
+      - "/bin/echo 'postgres:5432:*:${PGUSER}:${PGPASSWORD}' > /tmp/pgpassfile && chmod 600 /tmp/pgpassfile && /entrypoint.sh"
+    restart: unless-stopped
