@@ -1,11 +1,10 @@
-version: "3.8"
 services:
   pgadmin:
     container_name: artemis-pgadmin-dev01
     image: dpage/pgadmin4:latest
     environment:
-      PGADMIN_DEFAULT_EMAIL: tdevuser@gmail.com
-      PGADMIN_DEFAULT_PASSWORD: super-dee-duper-duper!
+      PGADMIN_DEFAULT_EMAIL: developer@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: super-extra-delicious
     volumes:
       - pgadmin:/var/lib/pgadmin
       - ./pgadmin.json:/pgadmin4/servers.json
@@ -15,4 +14,5 @@ services:
       - "/bin/sh"
       - "-c"
       - "/bin/echo 'postgres:5432:*:${PGUSER}:${PGPASSWORD}' > /tmp/pgpassfile && chmod 600 /tmp/pgpassfile && /entrypoint.sh"
-    restart: unless-stopped
+    networks:
+      - shared-network

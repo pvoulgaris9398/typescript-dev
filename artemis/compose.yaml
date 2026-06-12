@@ -1,53 +1,15 @@
-services:
-  db:
-    extends:
-      file: ./postgres/postgres-template.yaml
-      service: postgres
-    restart: always
-    environment:
+name: artemis-dev
 
-      PGUSER: postgres             
-      PGPASSWORD: super_admin_password
-      POSTGRES_USER: postgres             
-      POSTGRES_PASSWORD: super_admin_password
-      POSTGRES_DB: postgres
-
-      APP_DB_NAME: artemis_analytics
-      APP_DB_USER: artemis_worker
-      APP_DB_PASS: super_secret_app_pass
-      APP_SCHEMA_NAME: pricing
-    ports:
-      - "5432:5432"
-    volumes:
-      # Mount local data folder to persist data across container restarts
-      - postgres_data:/var/lib/postgresql/data
-      # CRITICAL: Mounts your local script folder to the auto-execute entrypoint folder
-      - ./db/scripts:/docker-entrypoint-initdb.d/
-    networks:
-      - app-network
-
-  pgadmin:
-    extends:  
-      file: ./pgadmin/pgadmin-template.yaml
-      service: pgadmin
-    restart: always
-    environment:
-      PGADMIN_CONFIG_SERVER_MODE: "False"
-      PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: "False"
-      
-      PGADMIN_EMAIL: tdevuser@gmail.com
-      PGADMIN_DEFAULT_PASSWORD: super-dee-duper-duper!
-    networks:
-      - app-network
-    depends_on:
-      - db
+include:
+  - path: ./postgres/postgres-template.yaml
+  - path: ./pgadmin/pgadmin-template.yaml
 
 volumes:
   postgres_data:
   pgadmin:
 
 networks:
-  app-network:
+  shared-network:
     driver: bridge
 
 # api:

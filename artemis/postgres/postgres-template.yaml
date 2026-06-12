@@ -1,7 +1,18 @@
-version: "3.8"
 services:
   postgres:
     container_name: artemis-db-dev01
     image: postgres:16-alpine
+
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: super_admin_password
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - shared-network
     volumes:
-      - ./init-scripts:/docker-entrypoint-initdb.d
+      # Mount local data folder to persist data across container restarts
+      - postgres_data:/var/lib/postgresql/data
+      # CRITICAL: Mounts your local script folder to the auto-execute entrypoint folder
+      - ./db/scripts:/docker-entrypoint-initdb.d/
